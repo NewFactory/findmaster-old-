@@ -1,0 +1,33 @@
+* {
+  text-decoration: none;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body, html {
+  height: 100%;
+}
+body {
+    -webkit-overflow-scrolling: touch;
+    color: #000;
+    font-size: 16px;
+    font-family: ProximaNova,'Helvetica Neue',Helvetica,Arial,sans-serif!important;
+    line-height: 1.4;
+}
+
+.main-page__rubricator-title {
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 34px;
+}
+
+.main-page__rubricator-description {
+    margin-top: 26px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 21px;
+  }
