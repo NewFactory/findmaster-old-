@@ -9,15 +9,13 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'main/css/desktop.css' %}" type="text/css">
   <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}" type="text/css">
-</head>
-
+  </head>
 <body>
   {% include "main/includes/nav.html" %}
-  {% include "main/includes/jumbotron_top.html" %}
+  <!--{% include "main/includes/jumbotron_top.html" %}-->
   {% block main %}{% endblock %}
   {% include "main/includes/jumbotron_center.html" %}
   {% include "main/includes/jumbotron_bottom.html" %}
   {% include "main/includes/footer.html" %}
 </body>
-
 </html>
