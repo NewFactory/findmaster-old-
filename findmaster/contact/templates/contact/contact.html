@@ -1,19 +1,15 @@
 {% extends 'main/wrapper.html' %}
-
 {% block title %}About{% endblock %}
-
 {% block main %}
 <main>
   <div class="container mt-5">
-    <form action="" method="post">
+    <form method="post">
       {% csrf_token %}
-      {{ form.name }}
-      {{ form.email }}
-      {{ form.message }}
-      <input type="text" name="Name" placeholder="Your name" class="form-control"><br>
-      <input type="email" name="Email" placeholder="Email" class="form-control"><br>
-      <textarea name="message" rows="8" cols="80" placeholder="Message" class="form-control"></textarea><br>
+      {{ form.name }}<br>
+      {{ form.email }}<br>
+      {{ form.message }}<br>
       <button type="submit" class="btn btn-success btn-lg btn-block mb-5">Submit</button>
+      <span>{{ error }}</span>
     </form>
   </div>
 </main>

@@ -1,11 +1,10 @@
 from django.db import models
 
 # Create your models here.
-class Messages(models.Model):
+class Message (models.Model):
     name = models.CharField('Name', max_length=50)
     email = models.CharField('Email', max_length=50)
     message = models.TextField('Message')
-    created = models.DateTimeField('Created')
 
     def __str__(self):
         return self.email
