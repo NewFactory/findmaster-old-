@@ -5,7 +5,13 @@
 {% block main %}
 <main class="mx-auto my-7 my-sm-5 my-lg-8">
   <div class="container">
-    <h1>Performer</h1>
+    <h1>{% if performer_list %}</h1>
+          {% for a in performer_list %}
+            <a href="{% url 'performer:detail' a.id %}">{{a.name}}</a>
+          {% endfor %}
+        {% else %}
+          NO COMP
+        {% endif %}
   </div>
 </main>
 {% endblock %}

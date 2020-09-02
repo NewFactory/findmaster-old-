@@ -1,22 +1,22 @@
 {% block nav %}
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6b0069;">
-  <a class="navbar-brand mb-0 h1" href="{% url 'index' %}">FindMaster</a>
+  <a class="navbar-brand mb-0 h1" href="{% url 'main:index' %}">FindMaster</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'about' %}">About</a>
+        <a class="nav-link" href="{% url 'main:about' %}">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+        <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'order' %}">Order</a>
+        <a class="nav-link" href="{% url 'order:order' %}">Order</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'performer' %}">Are you performer?</a>
+        <a class="nav-link" href="{% url 'performer:performer' %}">Are you performer?</a>
       </li>
     </ul>
   </div>
