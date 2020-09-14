@@ -5,17 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>FindMaster - {% block title %}{% endblock %}</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
   {% load static %}
-  <link rel="stylesheet" href="{% static 'main/css/desktop.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}" type="text/css">
-  </head>
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}" type="text/css">
+  <title>FindMaster - {% block title %}{% endblock %}</title>
+</head>
+
 <body>
-  {% include "main/includes/nav.html" %}
-  <!--{% include "main/includes/jumbotron_top.html" %}-->
-  {% block main %}{% endblock %}
-  {% include "main/includes/jumbotron_center.html" %}
-  {% include "main/includes/jumbotron_bottom.html" %}
-  {% include "main/includes/footer.html" %}
+  <header>
+    {% include "main/includes/header.html" %}
+  </header>
+
+  <content>
+    {% include "main/includes/jumbotron_top.html" %}
+    {% block content %}{% endblock %}
+    {% include "main/includes/jumbotron_center.html" %}
+    {% include "main/includes/jumbotron_bottom.html" %}
+  </content>
+
+  <footer>
+    {% include "main/includes/footer.html" %}
+  </footer>
 </body>
+
 </html>
