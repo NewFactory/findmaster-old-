@@ -5,7 +5,7 @@
     <div class="container">
       <h1>{% if performer_list %}</h1>
             {% for a in performer_list %}
-              <a href="{% url 'performer:detail' a.id %}">{{a.name}}</a>
+              <a href="{% url 'performer:detail' a.id %}" class="button">{{a.name}}</a>
             {% endfor %}
           {% else %}
             NO COMP

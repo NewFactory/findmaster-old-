@@ -24,14 +24,14 @@
     No review
     {% endif %}
 
-    <form action="{% url 'performer:leave_review' performer.id %}" method="POST">
+    <form action="{% url 'performer:leave_review' performer.id %}" method="POST" class="form">
       {% csrf_token %}
       <input type="text" required placeholder="Name" name="name"><br>
       <input type="email" required placeholder="Email" name="email"><br>
       <input type="rating" required placeholder="Rating" name="rating"><br>
       <textarea name="text" required placeholder="Your review" cols="30" rows="10"></textarea><br>
 
-      <button type="submit">Save</button>
+      <button type="submit" class="button">Save</button>
 
     </form>
   </div>

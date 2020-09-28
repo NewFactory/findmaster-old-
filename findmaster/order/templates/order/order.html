@@ -1,13 +1,13 @@
 {% extends 'main/wrapper.html' %}
 {% block title %}Order{% endblock %}
 {% block content %}
-  <div class="container mt-5">
+  <div class="container">
     <form method="post">
       {% csrf_token %}
       {{ form.name }}<br>
       {{ form.email }}<br>
       {{ form.message }}<br>
-      <button type="submit" class="btn btn-success btn-lg btn-block mb-5">Submit</button>
+      <button type="submit" class="button">Submit</button>
       <span>{{ error }}</span>
     </form>
   </div>

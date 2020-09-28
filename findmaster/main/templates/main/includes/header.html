@@ -1,15 +1,17 @@
 {% block header %}
-  <div class="navbar_menu">
-    <div class="navbar_menu_user">
-      <a href="{% url 'main:about' %}">Your Order</a>
-      <a href="{% url 'contact:contact' %}">Your Profile</a>
+  <div class="header">
+    <div class="header_logo">
+      <a href="{% url 'main:index' %}"><span>logo</span></a>
     </div>
-    <div class="navbar_menu_item">
-      <a href="{% url 'main:index' %}"><span>FindMaster</span></a>
-      <a href="{% url 'main:about' %}">About</a>
-      <a href="{% url 'contact:contact' %}">Contact</a>
+    <div class="header_menu_item">
+      <!-- <a href="{% url 'main:about' %}">About</a>
+      <a href="{% url 'contact:contact' %}">Contact</a> -->
       <a href="{% url 'order:order' %}">New Order</a>
-      <a href="{% url 'performer:performer' %}">Are you performer?</a>
+      <a href="{% url 'performer:performer' %}">Catalog</a>
+    </div>
+    <div class="header_menu_user">
+      <!-- <a href="{% url 'main:about' %}" class="header_menu_user_button">Your Order</a> -->
+      <a href="{% url 'contact:contact' %}" class="button">Your Profile</a>
     </div>
   </div>
 {% endblock %}

@@ -1,6 +1,11 @@
 {% block footer %}
-<div class="footerbar_menu">
-  <div class="copyright">
+<div class="footer">
+  <div class="footer_copyright">
     © {% now 'Y' %} <a href="https://newfactory.org">New Factory Group Inc.</a>
+  </div>
+  <div class="footer_menu">
+    <a href="{% url 'main:about' %}">About</a>
+    <a href="{% url 'contact:contact' %}">Contact Us</a>
+  </div>
 </div>
 {% endblock %}
