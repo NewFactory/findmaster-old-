@@ -1,0 +1,14 @@
+{% extends 'main/wrapper.html' %}
+{% block title %}Group{% endblock %}
+{% block content %}
+    <div class="container">
+      <h1>{% if group_list %}</h1>
+            {% for a in group_list %}
+              <a href="#" class="button">{{a.name}}</a>
+            {% endfor %}
+          {% else %}
+            NO COMP
+          {% endif %}
+    </div>
+    
+{% endblock %}

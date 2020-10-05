@@ -6,7 +6,6 @@ class Country(models.Model):
     create_date = models.DateTimeField('Create')
     change_date = models.DateTimeField('Change', auto_now=True)
 
-
     def __str__(self):
         return self.name
 
@@ -30,10 +29,8 @@ class City(models.Model):
     create_date = models.DateTimeField('Create')
     change_date = models.DateTimeField('Change', auto_now=True)
 
-
     def __str__(self):
         return self.name
-
 
     class Meta:
         verbose_name = 'City'

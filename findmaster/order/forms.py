@@ -12,6 +12,11 @@ class OrderForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Your name',
                 }),
+            # "city": TextInput(attrs={
+            #     'required': True,
+            #     'class': 'form-control',
+            #     'placeholder': 'Your city',
+            #     }),
             "email": EmailInput(attrs={
                 'required': True,
                 'class': 'form-control',

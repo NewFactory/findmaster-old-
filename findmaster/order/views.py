@@ -3,7 +3,6 @@ from .models import Order
 from .forms import OrderForm
 
 
-# Create your views here.
 def order(request):
     error = ''
     if request.method == 'POST':

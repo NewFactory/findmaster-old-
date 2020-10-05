@@ -3,17 +3,24 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
-# Create your models here.
-class Specialization(models.Model):
+class Group(models.Model):
     name = models.CharField('Name', max_length=50)
     description = models.TextField('Description', max_length=1000)
     create_date = models.DateTimeField('Create')
     change_date = models.DateTimeField('Change', auto_now=True)
 
-
     def __str__(self):
         return self.name
 
+class Specialization(models.Model):
+    name = models.CharField('Name', max_length=50, help_text="Enter field documentation")
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
+    description = models.TextField('Description', max_length=1000)
+    create_date = models.DateTimeField('Create')
+    change_date = models.DateTimeField('Change', auto_now=True)
+
+    def __str__(self):
+        return self.name
 
 class Performer(models.Model):
     name = models.CharField('Name', max_length=50)
@@ -30,36 +37,24 @@ class Performer(models.Model):
     create_date = models.DateTimeField('Create')
     change_date = models.DateTimeField('Change', auto_now=True)
 
-
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('performer:detail', args=[str(self.id)])
 
     def was_published_recently(self):
         return self.create_date >= (timezone.now() - datetime.timedelta(days=7))
-
 
     class Meta:
         verbose_name = 'Performer'
         verbose_name_plural = 'Performers'
         ordering = ["name"]
 
-
 class Review(models.Model):
-    rating_choices = [
-    ('1', '1'),
-    ('2', '2'),
-    ('3', '3'),
-    ('4', '4'),
-    ('5', '5')
-]
     performer = models.ForeignKey(Performer, on_delete=models.SET_NULL, null=True)
     autor = models.CharField('Autor', max_length=50)
     email = models.EmailField('Email', max_length=50)
-    rating = models.DecimalField('Rating', max_digits=2, decimal_places=1,
-                choices=rating_choices, default=1,    )
     reviews = models.TextField('Reviews', max_length=300)
     create_date = models.DateTimeField('Create')
     change_date = models.DateTimeField('Change', auto_now=True)
