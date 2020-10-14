@@ -1,13 +1,11 @@
 {% extends 'main/wrapper.html' %}
-{% block title %}Specialization{% endblock %}
+{% block title %}{{group.name}}{% endblock %}
 {% block content %}
-    <div class="container">
-      <h1>{% if specialization_list %}</h1>
-            {% for a in specialization_list %}
-              <a href="#" class="button">{{a.name}}</a>
-            {% endfor %}
-          {% else %}
-            NO COMP
-          {% endif %}
-    </div>
+{% if specialization %}
+{% for specialization in specialization %}
+<a href="{% url 'performer:performer' specialization.id %}" class="button">{{specialization.name}}</a>
+{% endfor %}
+{% else %}
+  NO COMPpppppppppppppp
+{% endif %}
 {% endblock %}

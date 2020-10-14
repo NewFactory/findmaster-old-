@@ -1,14 +1,11 @@
 {% extends 'main/wrapper.html' %}
-{% block title %}Group{% endblock %}
+{% block title %}Groups{% endblock %}
 {% block content %}
-    <div class="container">
-      <h1>{% if group_list %}</h1>
-            {% for a in group_list %}
-              <a href="#" class="button">{{a.name}}</a>
-            {% endfor %}
-          {% else %}
-            NO COMP
-          {% endif %}
-    </div>
-    
+{% if group_list %}
+{% for group_list in group_list %}
+  <a href="{% url 'performer:specialization' group_list.id %}" class="button">{{ group_list.name }}</a>
+{% endfor %}
+{% else %}
+<h3>NO GROUP</h3>
+{% endif %}
 {% endblock %}

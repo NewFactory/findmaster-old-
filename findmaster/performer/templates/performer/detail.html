@@ -1,39 +1,39 @@
 {% extends 'main/wrapper.html' %}
 {% block title %}{{performer.name}}{% endblock %}
 {% block content %}
-  <main class="mx-auto my-7 my-sm-5 my-lg-8">
-    <div class="container">
-      {% if performer.was_published_recently %}
-      NEW!!! COMP
-      {% endif %}
-      <br>
-      <br>
-      <h2>{{performer.name}}</h2>
-        <p>{{performer.description}}</p>
-      <em>{{performer.create_date}}</em><br>
-      <br>
+{% if performer.was_published_recently %}
+  NEW!!! COMP
+{% endif %}
+  <h1>{{performer.name}}</h1><br>
+  {% for specialization in a.specialization.all %}
+  {{ specialization.name }}
+  {% endfor %}
+  {{specialization}}
+  <p>{{performer.web_site}}</p><br>
+  <p>{{performer.phone}}</p><br>
+  <p>{{performer.specialization}}</p><br>
+  <p>{{performer.country}}</p><br>
+  <p>{{performer.provinces}}</p><br>
+  <p>{{performer.city}}</p><br>
+  <p>{{performer.option}}</p><br>
+  <p>{{performer.description}}</p><br>
+  <em>{{performer.create_date}}</em><br>
+  <br>
+{% if latest_list_review %}
+{% for a in latest_list_review %}
+  <strong>{{a.autor}}</strong>
+  <p>{{a.reviews}}</p>
+{% endfor %}
+{% else %}
+  No review. Need review!
+{% endif %}
 
-      {% if latest_list_review %}
-
-        {% for c in latest_list_review %}
-            <strong>{{c.autor}}</strong>
-            <p>{{c.reviews}}</p>
-        {% endfor %}
-
-    {% else %}
-    No review
-    {% endif %}
-
-    <form action="{% url 'performer:leave_review' performer.id %}" method="POST" class="form">
-      {% csrf_token %}
-      <input type="text" required placeholder="Name" name="name"><br>
-      <input type="email" required placeholder="Email" name="email"><br>
-      <input type="rating" required placeholder="Rating" name="rating"><br>
-      <textarea name="text" required placeholder="Your review" cols="30" rows="10"></textarea><br>
-
-      <button type="submit" class="button">Save</button>
-
-    </form>
-  </div>
-</main>
+<form action="{% url 'performer:leave_review' performer.id %}" method="POST" class="form">
+{% csrf_token %}
+  <input type="text" required placeholder="Name" name="name"><br>
+  <input type="email" required placeholder="Email" name="email"><br>
+  <input type="rating" required placeholder="Rating" name="rating"><br>
+  <textarea name="text" required placeholder="Your review" cols="30" rows="10"></textarea><br>
+  <button type="submit" class="button">Save</button>
+</form>
 {% endblock %}

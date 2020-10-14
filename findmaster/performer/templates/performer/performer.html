@@ -1,15 +1,13 @@
 {% extends 'main/wrapper.html' %}
-{% block title %}Performer{% endblock %}
+{% block title %}{{performers.name}}{% endblock %}
 {% block content %}
-  <main class="">
-    <div class="container">
-      <h1>{% if performer_list %}</h1>
-            {% for a in performer_list %}
-              <a href="{% url 'performer:detail' a.id %}" class="button">{{a.name}}</a>
-            {% endfor %}
-          {% else %}
-            NO COMP
-          {% endif %}
-    </div>
-  </main>
+  {% for specializations in specializations %}
+    {% if specializations.performer_set.all %}
+      {% for performers in specializations.performer_set.all %}
+        <a href="{% url 'performer:detail' performers.id %}" class="button">{{performers.name}}</a>
+      {% endfor %}
+    {% else %}
+      <h3>NO COMP</h3>
+    {% endif %}
+  {% endfor %}
 {% endblock %}
