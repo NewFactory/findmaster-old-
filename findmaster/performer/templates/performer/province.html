@@ -1,0 +1,10 @@
+{% extends 'main/wrapper.html' %}
+{% block content %}
+{% if provinces %}
+{% for provinces in provinces %}
+<a href="#" class="button">{{provinces.name}}</a>
+{% endfor %}
+{% else %}
+  NO provinces
+{% endif %}
+{% endblock %}

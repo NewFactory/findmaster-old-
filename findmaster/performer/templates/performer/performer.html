@@ -1,5 +1,4 @@
 {% extends 'main/wrapper.html' %}
-{% block title %}{{performers.name}}{% endblock %}
 {% block content %}
   {% for specializations in specializations %}
     {% if specializations.performer_set.all %}

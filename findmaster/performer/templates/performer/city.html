@@ -1,0 +1,12 @@
+{% extends 'main/wrapper.html' %}
+{% block content %}
+  {% for provinces in provinces %}
+    {% if provinces.city_set.all %}
+      {% for provinces in provinces.city_set.all %}
+        <a href="{% url 'performer:performer' cities.id %}" class="button">{{provinces.name}}</a>
+      {% endfor %}
+    {% else %}
+      <h3>NO COMP</h3>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

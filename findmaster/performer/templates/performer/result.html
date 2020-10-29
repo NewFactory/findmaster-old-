@@ -1,0 +1,35 @@
+{% extends 'main/wrapper.html' %}
+{% block content %}
+  {% for data in data %}
+    {% if find == "province" %}
+      {% for cities in data.city_set.all %}
+        <a href="{% url 'performer:city' cities.name %}" class="button">{{cities.name}}</a>
+      {% endfor %}
+    {% endif %}
+    {% if find == "country" %}
+      {% for provinces in data.provinces_set.all %}
+        <a href="{% url 'performer:province' provinces.name %}" class="button">{{provinces.name}}</a>
+      {% endfor %}
+    {% endif %}
+      {% if find == "city" %}
+        {% for specializations in data.specializations.all %}
+          <a href="{% url 'performer:specialization' specializations.name %}" class="button">{{specializations.name}}</a>
+        {% endfor %}
+      {% endif %}
+    {% if find == "specialization" %}
+      {% for performers in data.performer_set.all %}
+        <a href="{% url 'performer:detail' performers.id %}" class="button">{{performers.name}}</a>
+      {% endfor %}
+    {% endif %}
+    {% if find == "group" %}
+      {% for specialization in data.specialization_set.all %}
+        <a href="{% url 'performer:specialization' specialization.name %}" class="button">{{specialization.name}}</a>
+      {% endfor %}
+    {% endif %}
+    {% if find == "all_performer" %}
+      {% for performers in data.performer.all %}
+        <a href="{% url 'performer:performer' performers.name %}" class="button">{{performers.name}}</a>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endblock %}

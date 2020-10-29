@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
-class Group(models.Model):
+class Group (models.Model):
     name = models.CharField('Name', max_length=50)
     description = models.TextField('Description', max_length=1000)
     create_date = models.DateTimeField('Create')
@@ -12,9 +12,13 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
-class Specialization(models.Model):
+    class Meta:
+        ordering = ['name']
+
+
+class Specialization (models.Model):
     name = models.CharField('Name', max_length=50, help_text="///")
-    groups = models.ForeignKey(Group, related_name='group_specialization', on_delete=models.SET_NULL, null=True)
+    groups = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
     description = models.TextField('Description', max_length=1000)
     create_date = models.DateTimeField('Create')
     change_date = models.DateTimeField('Change', auto_now=True)
@@ -22,12 +26,38 @@ class Specialization(models.Model):
     def __str__(self):
         return self.name
 
-class Performer(models.Model):
+    class Meta:
+        ordering = ['name']
+
+
+class Email (models.Model):
+    email = models.EmailField('Email', help_text="///")
+    status = models.ForeignKey('main.Status', on_delete=models.SET_NULL, null=True)
+    description = models.TextField('Description', max_length=1000)
+    create_date = models.DateTimeField('Create')
+    change_date = models.DateTimeField('Change', auto_now=True)
+
+    def __str__(self):
+        return self.email
+
+
+class Phone (models.Model):
+    number = models.CharField('Number', max_length=10, help_text="///")
+    status = models.ForeignKey('main.Status', on_delete=models.SET_NULL, null=True)
+    description = models.TextField('Description', max_length=1000)
+    create_date = models.DateTimeField('Create')
+    change_date = models.DateTimeField('Change', auto_now=True)
+
+    def __str__(self):
+        return self.number
+
+
+class Performer (models.Model):
     name = models.CharField('Name', max_length=50)
     specializations = models.ManyToManyField(Specialization)
     web_site = models.URLField('Web site', max_length=100)
-    email = models.EmailField('Email', max_length=50)
-    phone = models.CharField('Phone', max_length=16)
+    email = models.ManyToManyField(Email)
+    phones = models.ManyToManyField(Phone)
     country = models.ManyToManyField('main.Country')
     provinces = models.ManyToManyField('main.Provinces')
     cities = models.ManyToManyField('main.City')

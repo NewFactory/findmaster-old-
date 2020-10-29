@@ -1,7 +1,10 @@
 from django.contrib import admin
-from .models import Performer, Review, Group, Specialization
+from .models import Performer, Review, Group, Specialization, Phone, Email
 
 admin.site.register(Group)
+admin.site.register(Phone)
+admin.site.register(Email)
+
 
 class PerformerAdmin(admin.ModelAdmin):
     list_filter = ('name', 'specializations', 'cities', 'provinces')

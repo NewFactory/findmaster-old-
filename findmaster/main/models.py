@@ -1,6 +1,20 @@
 from django.db import models
 
-class Country(models.Model):
+class Status (models.Model):
+    name = models.CharField('Name', max_length=50, help_text="///")
+    description = models.TextField('Description', max_length=1000)
+    create_date = models.DateTimeField('Create')
+    change_date = models.DateTimeField('Change', auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Status'
+        verbose_name_plural = 'Status'
+
+
+class Country (models.Model):
     name = models.CharField('Name', max_length=50)
     description = models.TextField('Description', max_length=1000)
     create_date = models.DateTimeField('Create')
@@ -9,20 +23,25 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
 
-class Provinces(models.Model):
+
+class Provinces (models.Model):
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
     name = models.CharField('Name', max_length=50)
     description = models.TextField('Description', max_length=1000)
     create_date = models.DateTimeField('Create')
     change_date = models.DateTimeField('Change', auto_now=True)
 
-
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
 
-class City(models.Model):
+
+class City (models.Model):
     provinces = models.ForeignKey(Provinces, on_delete=models.SET_NULL, null=True)
     name = models.CharField('Name', max_length=50)
     description = models.TextField('Description', max_length=1000)
@@ -35,3 +54,4 @@ class City(models.Model):
     class Meta:
         verbose_name = 'City'
         verbose_name_plural = 'Сities'
+        ordering = ['name']
